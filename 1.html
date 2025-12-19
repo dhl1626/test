@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>示例页面</title>
+  <style>
+    body{font-family:Segoe UI,Arial,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:linear-gradient(135deg,#f6d365,#fda085);}
+    .card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.12);max-width:360px;text-align:center;}
+    h1{margin:0 0 8px;font-size:20px;color:#333}
+    p{margin:0 0 16px;color:#666}
+    button{background:#ff7a59;color:#fff;border:none;padding:10px 16px;border-radius:8px;cursor:pointer;font-weight:600}
+    button:active{transform:translateY(1px)}
+    .count{display:inline-block;margin-left:8px;color:#ff7a59;font-weight:700}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>欢迎！</h1>
+    <p>这是一段随机生成的 HTML 示例。</p>
+    <button id="btn">点击我 <span class="count" id="count">0</span></button>
+  </div>
+
+  <script>
+    const btn = document.getElementById('btn');
+    const countSpan = document.getElementById('count');
+    let n = 0;
+    btn.addEventListener('click', () => {
+      n++;
+      countSpan.textContent = n;
+      btn.animate([{transform:'translateY(-6px)'},{transform:'translateY(0)'}],{duration:140});
+    });
+  </script>
+</body>
+</html>
