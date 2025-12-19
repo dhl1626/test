@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>事件处理练习</title>
+    <style>
+      div {
+        border: solid 1px blue;
+        margin: 5px auto;
+        padding: 5px;
+        width: 600px;
+      }
+
+      #J_Div2 {
+        background-color: red;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="J_Div1">点击我，弹出一个对话框，显示我的id属性值</div>
+    <div><input type="button" value="鼠标放到我上面，J_Div2就出现了，鼠标移开，J_Div2又消失了" id="J_Btn1" /></div>
+    <div id="J_Div2">J_Div2</div>
+    <div id="J_Div3">点击我，弹出一个对话框，可以显示鼠标的坐标</div>
+
+    <script>
+      // 获取 DOM 元素
+      const J_Div1 = document.getElementById('J_Div1');
+      const J_Btn1 = document.getElementById('J_Btn1');
+      const J_Div2 = document.getElementById('J_Div2');
+      const J_Div3 = document.getElementById('J_Div3');
+
+      
+      J_Div1.addEventListener('click', function () {
+        alert(`J_Div1 的 id 属性值为：${this.id}`);
+      });
+
+     
+      J_Btn1.addEventListener('mouseover', function () {
+        J_Div2.style.display = 'block';
+      });
+
+      
+      J_Btn1.addEventListener('mouseout', function () {
+        J_Div2.style.display = 'none';
+      });
+
+      
+      J_Div3.addEventListener('click', function (event) {
+        alert(`鼠标坐标：X = ${event.clientX}, Y = ${event.clientY}`);
+      });
+    </script>
+  </body>
+</html>

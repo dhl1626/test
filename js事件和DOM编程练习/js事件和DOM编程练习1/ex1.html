@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>修改DOM节点样式练习</title>
+  </head>
+  <body>
+    <p id="text">JavaScript DOM 编程</p>
+    <input type="button" value="改变样式" onclick="changeStyle()" />
+    <script>
+      function changeStyle() {
+        // 添加代码
+        const text=document.getElementById("text");
+            text.style.fontSize="14px";
+            text.style.color="green";
+      }
+    </script>
+  </body>
+</html>

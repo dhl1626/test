@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 1210px;
+        margin: 200px auto;
+        color: red;
+        text-align: center;
+        font: 600 30px/30px "simsun";
+      }
+    </style>
+  </head>
+  <body>
+    <div id="time"></div>
+    <script>
+      // 练习1
+      // 练习Set的使用，将一个数组的所有元素存放到一个Set对象中，再将Set对象转化为数组
+      function testSet(){
+        const arr = ["张三","李四","王五","张三"];
+        // 由数组arr创建一个Set：nameSet，提示：使用Set的构造函数
+        const nameSet = new Set(arr);
+        console.log(nameSet); // Set(3) {'张三', '李四', '王五'} - 注意"张三"只出现一次
+        
+        // 由nameSet创建一个Array：nameArr，提示：使用扩展运算符"..."，或者Array的构造函数
+        const nameArr = [...nameSet]; // 或者 Array.from(nameSet)
+        console.log(nameArr); // ['张三', '李四', '王五']
+      }
+      testSet();
+
+      // 练习 2
+      // 在函数 testObject 的定义中，使用内置对象 Object 的 keys, values, entries 方法完成要求。
+      function testObject() {
+        let salaries = {
+          John: 100,
+          Pete: 300,
+          Mary: 250,
+        };
+        // 使用Object的keys方法，获取对象salaries所有的键的数组，并打印
+        console.log(Object.keys(salaries)); // ['John', 'Pete', 'Mary']
+        
+        // 使用Object的values方法，获取对象salaries所有的值的数组，并打印
+        console.log(Object.values(salaries)); // [100, 300, 250]
+        
+        // 使用Object的entries方法，获取对象salaries所有 [key, value] 键值对的数组。
+        const entries = Object.entries(salaries);
+        console.log(entries); // [['John', 100], ['Pete', 300], ['Mary', 250]]
+        
+        // 遍历entries数组，找到收入最高的人的姓名nameTop。
+        let nameTop = null;
+        let salaryTop = 0;
+        entries.forEach(([name, salary]) => {
+          if (salary > salaryTop) {
+            salaryTop = salary;
+            nameTop = name;
+          }
+        });
+        console.log(nameTop); // 'Pete'
+      }
+      testObject();
+      // 练习3
+      const divTime = document.getElementById("time"); // 获取id为time的div节点
+      const endTime = new Date("2023-10-31 20:00:00").getTime(); // 活动结束时间戳
+      const timer = setInterval(countDown, 1000); // 定时器，每1000毫秒执行1次countDown函数
+
+      function countDown() {
+          // 获取时间差
+          const remainTime = endTime - Date.now();
+          // 已经超过活动时间
+          if (remainTime < 0) {
+              div.innerHTML = "离活动还有00天00小时00分00秒";
+              clearInterval(timer); // 清理定时器
+              return;
+          }
+          let day = parseInt(remainTime / 1000 / 60 / 60 / 24); // 天
+          let hour = parseInt((remainTime / 1000 / 60 / 60) % 24); // 时
+          let minu = parseInt((remainTime / 1000 / 60) % 60); // 分
+          let sec = parseInt((remainTime / 1000) % 60); // 秒
+          // 细节处理：所有的时间小于10的时候，在前面自动补0，比如把8秒改成08秒
+          day = day < 10 ? "0" + day : day;
+          hour = hour < 10 ? "0" + hour : hour;
+          minu = minu < 10 ? "0" + minu : minu;
+          sec = sec < 10 ? "0" + sec : sec;
+          // 页面显示倒计时内容
+          divTime.innerHTML = `离活动还有${day}天${hour}小时${minu}分${sec}秒`;
+}
+      // 练习4
+      function deepCopy(source) {
+          // 使用JSON的stringify方法，将source对象序列化成JSON字符串
+          const json = JSON.stringify(source);
+          console.log(json);
+          // 使用JSON的parse方法，将JSON字符串json反序列化成对象，并返回
+          return JSON.parse(json);
+      }
+
+      const obj1 = {
+          name: "zhangsan",
+          age: 20,
+          info: {
+              desc: "student"
+          },
+          color: ["red", "blue", "green"],
+      };
+
+      // 使用扩展运算符"..."进行浅拷贝，将obj1对象的属性拷贝到新对象obj2中。
+      const obj2 = { ...obj1 };
+
+      // 调用deepCopy方法进行深拷贝，将方法的返回值赋给obj3。
+      const obj3 = deepCopy(obj1);
+
+      // 修改原对象内部对象属性，观察浅拷贝和深拷贝的区别
+      obj1.info.desc = "teacher";
+      console.log(obj2.info.desc); // teacher，浅拷贝，嵌套属性对象的值跟着修改
+      console.log(obj3.info.desc); // student，深拷贝，嵌套属性对象的值不做修改
+    </script>
+  </body>
+</html>

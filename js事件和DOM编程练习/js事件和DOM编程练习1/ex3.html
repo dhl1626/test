@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>动态创建DOM节点练习</title>
+  </head>
+  <body>
+    <form id="form">
+      <p>姓名: <input type="checkbox" value="姓名" /></p>
+      <p>年龄: <input type="checkbox" value="年龄" /></p>
+      <p>性别: <input type="checkbox" value="性别" /></p>
+      <input type="button" value="添加文本框" onclick="addTextField()" />
+    </form>
+    <script>
+      function addTextField() {
+        const form = document.querySelector("#form");
+        
+        const checkedNodes = form.querySelectorAll("input[type='checkbox']:checked");
+        
+        
+        checkedNodes.forEach((node) => {
+          const p = document.createElement("p");
+        
+          p.innerHTML = `${node.value}: <input type="text" />`;
+          form.appendChild(p);
+         
+        });
+      }
+    </script>
+  </body>
+</html>

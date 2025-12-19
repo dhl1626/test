@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>改变DOM树练习</title>
+    <style>
+      .red {
+        color: red;
+      }
+      .blue {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>DOM Tree</h1>
+    <ul id="list">
+      <li class="red">list-item 1</li>
+      <li>list-item 2</li>
+      <li>list-item 3</li>
+      <li>list-item 4</li>
+    </ul>
+    <input type="button" value="改变列表" onclick="changeList()" />
+    <script>
+      function changeList() {
+        // 添加代码
+        const list=document.getElementById("list");
+        const firstchild=list.firstElementChild;
+        list.firstElementChild.replaceWith(list.lastElementChild);
+        list.append(firstchild);
+        list.children[1].classList.add("blue");
+        const newItem=document.createElement("li");
+        newItem.innerHTML="list-item New";
+        list.children[1].after(newItem);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log("" + 1 + 0); // "10"， 字符串连接
+      console.log("" - 1 + 0); // -1，进行算术运算，""转换为0，
+      console.log(true + false); // 1，进行算术运算，true转换为1，false转换为0
+      console.log(6 / "3"); // 2，进行算数运算，"3"转换为3
+      console.log("2" * "3"); // 6，进行算数运算，"2"转换为2，"3"转换为3
+      console.log(4 + 5 + "px"); // "9px"，先进行算数运算，再字符串拼接
+      console.log("$" + 4 + 5); // "$45"，字符串拼接
+      console.log("4" - 2); // 2，进行算数运算
+      console.log("4px" - 2); // NaN，string，去掉首尾连续空白字符后，"" -> 0，其余 -> 数值或 NaN
+      console.log("  -9  " + 5); // "  -9  5"，字符串拼接
+      console.log("  -9  " - 5); // -14，进行算术运算
+      console.log(null + 1); // 1，进行算术运算，null转换为0
+      console.log(undefined + 1); // NaN，undefined转换为NaN
+      console.log(" \t \n" - 2); // -2，进行算术运算，" \t \n"转换为0
+      console.log(0 == true); // false，boolean判断，0转换成false
+      console.log(1 == true); // true，boolean判断，1转换成true
+      console.log(1 === true); // false，boolean判断，1转换成true
+      console.log("a" == false); // false，boolean判断，"a"转换成true
+      console.log("" == false); // true，boolean判断，""转换成false
+      console.log("" === false); // false，boolean判断，""转换成false
+      console.log(undefined == null); // true，boolean判断，"undefined"转换成false，"null"转换成false
+      console.log(undefined === null); // false，boolean判断，"undefined"转换成false，"null"转换成false
+      console.log(!3); // false，boolean判断，3转换成true
+      console.log(!!3); // true，boolean判断，3转换成true
+      console.log(123 || null || "abc"); // 123，或运算寻找第一个真值
+      console.log(0 || null || "abc"); // "abc"，或运算寻找第一个真值
+      console.log(0 || null || undefined); // undefined，或运算寻找第一个真值
+      console.log(123 && null && "abc"); // null，与运算寻找第一个假值
+      console.log(0 && null && "abc"); // 0，与运算寻找第一个假值
+      console.log(123 && [] && "abc"); // "abc"，与运算寻找第一个假值
+      console.log(123 ?? "abc"); // 123，空值合并运算符
+      console.log(null ?? "abc"); // "abc"，空值合并运算符
+    </script>
+  </body>
+</html>
